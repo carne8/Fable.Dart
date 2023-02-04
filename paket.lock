@@ -1,0 +1,5 @@
+STORAGE: SYMLINK
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    Fable.Core (4.0.0-theta-007)
+    FSharp.Core (7.0)

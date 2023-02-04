@@ -1,0 +1,5 @@
+storage: symlink
+source https://api.nuget.org/v3/index.json
+
+nuget FSharp.Core
+nuget Fable.Core prerelease

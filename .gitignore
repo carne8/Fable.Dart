@@ -1,0 +1,9 @@
+.paket/
+packages/
+paket-files/
+
+bin/
+obj/
+fable_modules/
+
+**.fs.dart
