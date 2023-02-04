@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageId>Fable.Dart</PackageId>
     <Description>Dart bindings for Fable</Description>
@@ -12,7 +12,7 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="../LICENSE" Pack="true" PackagePath=""/>
+    <None Include="../LICENSE.md" Pack="true" PackagePath=""/>
     <None Include="../README.md" Pack="true" PackagePath=""/>
 
     <Compile Include="Uri.fs" />
