@@ -1,21 +1,23 @@
-﻿module Fable.Dart.Future
+﻿namespace rec Fable.Dart
+
+#nowarn "40"
 
 open Fable.Core
 open Fable.Core.Dart
 
-[<ImportMember "dart:core">]
-let print (_: string) : unit = nativeOnly
-
+/// https://api.dart.dev/dart-async/Future-class.html
 [<ImportMember "dart:async">]
 type Future<'T> =
     interface Dart.Future<'T>
     member _.``then``(_: 'T -> 'A) : Future<'A> = nativeOnly
     member _.catchError(_: _ -> _) = nativeOnly
 
+/// https://api.dart.dev/dart-async/Future-class.html
 module Future =
     let inline map (f: 'T -> 'A) (future: Future<'T>) : Future<'A> = emitExpr (future, f) "$0.then($1)"
     let inline bind (f: 'T -> Future<'A>) (future: Future<'T>) : Future<'A> = emitExpr (future, f) "$0.then($1)"
     let inline delayed (duration: System.TimeSpan) (future: unit -> 'A) : Future<'A> = emitExpr (import "Future" "dart:async", duration, future) "$0.delayed($1, $2)"
+    let future = new FutureBuilder()
 
 type FutureBuilder() =
     member _.Bind(p: Future<'T1>, f: 'T1 -> Future<'T2>): Future<'T2> = p |> Future.bind f
@@ -31,5 +33,3 @@ type FutureBuilder() =
     member _.TryWith(p: Future<'T>, catchHandler: exn -> Future<'T>): Future<'T> = nativeOnly
     member _.Run(p:Future<'T>): Future<'T> = p.``then``(id)
     member _.BindReturn(y: Future<'T1>, f) = Future.map f y
-
-let future = new FutureBuilder()
