@@ -1,9 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageId>Fable.Dart</PackageId>
+    <Description>Dart bindings for Fable</Description>
+    <PackageTags>fsharp;fable;flutter;dart</PackageTags>
+    <Authors>Gaël Bouquain</Authors>
+    <Version>1.0.0</Version>
     <OutputType>Library</OutputType>
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="../LICENSE" Pack="true" PackagePath=""/>
+    <None Include="../README.md" Pack="true" PackagePath=""/>
+
     <Compile Include="Uri.fs" />
     <Compile Include="Future.fs" />
   </ItemGroup>
