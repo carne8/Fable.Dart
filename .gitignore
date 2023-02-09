@@ -5,5 +5,7 @@ paket-files/
 bin/
 obj/
 fable_modules/
+*.nupkg
 
 **.fs.dart
+.fake

@@ -5,18 +5,20 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageId>Fable.Dart</PackageId>
     <Description>Dart bindings for Fable</Description>
-    <PackageTags>fsharp;fable;flutter;dart</PackageTags>
+    <PackageTags>fsharp;flutter;dart;fable;fable-binding;fable-dart</PackageTags>
     <Authors>Gaël Bouquain</Authors>
-    <Version>1.0.0</Version>
+    <Version>1.0.10</Version>
     <OutputType>Library</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
     <None Include="../LICENSE.md" Pack="true" PackagePath=""/>
     <None Include="../README.md" Pack="true" PackagePath=""/>
 
     <Compile Include="Uri.fs" />
     <Compile Include="Future.fs" />
+    <Compile Include="Map.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

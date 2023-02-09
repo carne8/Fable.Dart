@@ -16,24 +16,24 @@ type Uri [<NamedParams>]
      [<Optional>] path: string,
      [<Optional>] pathSegments: string seq,
      [<Optional>] query: string,
-     [<Optional>] queryParameters: Map<string, _>,
+     [<Optional>] queryParameters: Map<string, string>,
      [<Optional>] fragment: string) =
     static member http(_host: string) : Uri = nativeOnly
     static member https(_host: string) : Uri = nativeOnly
     static member directory(_path: string) : Uri = nativeOnly
     static member file(_path: string) : Uri = nativeOnly
     /// Creates a data: URI containing an encoding of bytes.
-    static member dataFromBytes(_bytes: int list, ?_mimeType: string, ?_parameters: Map<string, string>, ?_percentEncoded: bool) : Uri = nativeOnly
+    static member dataFromBytes(_bytes: int list, [<Optional>] _mimeType: string, [<Optional>] _parameters: Map<string, string>, [<Optional>] _percentEncoded: bool) : Uri = nativeOnly
     /// Creates a data: URI containing the content string.
-    static member dataFromString(_content: string, ?_mimeType: string, ?_encoding: IEncoding, ?_parameters: Map<string, string>, ?_base64: bool) : Uri = nativeOnly
+    static member dataFromString(_content: string, [<Optional>] _mimeType: string, [<Optional>] _encoding: IEncoding, [<Optional>] _parameters: Map<string, string>, [<Optional>] _base64: bool) : Uri = nativeOnly
     /// Like Uri.file except that a non-empty URI path ends in a slash.
-    static member directory(_path: string, ?_windows: bool) : Uri = nativeOnly
+    static member directory(_path: string, [<Optional>] _windows: bool) : Uri = nativeOnly
     /// Creates a new file URI from an absolute or relative file path.
-    static member file(_path: string, ?_windows: bool) : Uri = nativeOnly
+    static member file(_path: string, [<Optional>] _windows: bool) : Uri = nativeOnly
     /// Creates a new http URI from authority, path and query.
-    static member http(_authority: string, ?_unencodedPath: string, ?_queryParameters: Map<string, _>) : Uri = nativeOnly
+    static member http(_authority: string, [<Optional>] _unencodedPath: string, [<Optional>] _queryParameters: Map<string, string>) : Uri = nativeOnly
     /// Creates a new https URI from authority, path and query.
-    static member https(_authority: string, ?_unencodedPath: string, ?_queryParameters: Map<string, _>) : Uri = nativeOnly
+    static member https(_authority: string, [<Optional>] _unencodedPath: string, [<Optional>] _queryParameters: Map<string, string>) : Uri = nativeOnly
 
     /// The authority component.
     member _.authority : string = nativeOnly
