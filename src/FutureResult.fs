@@ -1,5 +1,7 @@
 namespace Fable.Dart.Future
 
+#nowarn "59"
+
 open FsToolkit.ErrorHandling
 
 [<RequireQualifiedAccess>]
@@ -16,6 +18,10 @@ module FutureResult =
             | Error e -> future { return Error e }
         return! t
     }
+    let catchError (future: Future<'ok>) =
+        future
+        |> Future.map (Ok >> unbox<Result<'ok, obj>>)
+        |> Future.catchError (fun e -> e |> Error :> Result<'ok, obj> |> unbox<Result<'ok, obj>>)
     let retn x = Ok x |> Future.singleton
     let returnError x = Error x |> Future.singleton
     /// Replaces the wrapped value with unit
