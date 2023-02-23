@@ -1,7 +1,6 @@
 module Fable.Dart.IO
 
 open Fable.Core
-open Fable.Core.Dart
 open Fable.Dart
 open Fable.Dart.Future
 

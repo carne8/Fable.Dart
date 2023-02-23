@@ -34,7 +34,6 @@ module ComputationExpression =
         member _.Return(a: 'T): Future<'T> = Future.singleton a
         member _.ReturnFrom(p: Future<'T>): Future<'T> = p
         member _.Zero(): Future<unit> = emitExpr (import "Future" "dart:async") "$0<void>.value()"
-        [<Emit("$1.catchError($2)")>]
         member _.Run(p:Future<'T>): Future<'T> = p.``then``(id)
         member _.BindReturn(y: Future<'T1>, f) = Future.map f y
 
