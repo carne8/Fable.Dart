@@ -7,7 +7,7 @@
     <Description>Dart bindings for Fable</Description>
     <PackageTags>fsharp;flutter;dart;fable;fable-binding;fable-dart</PackageTags>
     <Authors>Gaël Bouquain</Authors>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <OutputType>Library</OutputType>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
   </PropertyGroup>
@@ -19,6 +19,7 @@
     <Compile Include="Libs/FsToolkit.ErrorHandling/Result.fs" />
 
     <Compile Include="Global.fs" />
+    <Compile Include="Environment.fs" />
     <Compile Include="Uri.fs" />
     <Compile Include="Future.fs" />
     <Compile Include="FutureResult.fs" />
