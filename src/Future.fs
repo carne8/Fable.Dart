@@ -20,9 +20,9 @@ module Future =
     let inline delayed (duration: System.TimeSpan) (future: unit -> 'A) : Future<'A> = emitExpr (import "Future" "dart:async", duration, future) "$0.delayed($1, $2)"
     let inline value (x: 'A) : Future<'A> = emitExpr (import "Future" "dart:async", x) "$0.value($1)"
     let inline singleton (x: 'A) : Future<'A> = value x
+    let inline wait (futureList: Future<'T> array) : Future<'T array> = emitExpr (import "Future" "dart:async", futureList) "$0.wait($1)"
     /// Takes two futures and returns a tuple of the pair
-    let zip (a1: Future<'T1>) (a2: Future<'T2>) : ('T1 * 'T2) Future =
-        a1 |> bind (fun r1 -> a2 |> map (fun r2 -> r1, r2))
+    let zip (a1: Future<'T1>) (a2: Future<'T2>) : ('T1 * 'T2) Future = a1 |> bind (fun r1 -> a2 |> map (fun r2 -> r1, r2))
 
 [<AutoOpen>]
 module ComputationExpression =
