@@ -5,8 +5,8 @@ open Fable.Dart
 open Fable.Dart.Future
 
 type [<ImportMember "dart:io">] FileSystemEntity() =
-    member _.delete (recursive: bool) : Future<FileSystemEntity> = nativeOnly
-    member _.deleteSync (recursive: bool) : unit = nativeOnly
+    [<NamedParams>] member _.delete ([<OptionalArgument>] recursive: bool) : Future<FileSystemEntity> = nativeOnly
+    [<NamedParams>] member _.deleteSync ([<OptionalArgument>] recursive: bool) : unit = nativeOnly
     member _.exists () : Future<bool> = nativeOnly
     member _.existsSync () : bool = nativeOnly
     member _.absolute: FileSystemEntity = nativeOnly
@@ -58,7 +58,7 @@ type [<ImportMember "dart:io">] File(path: string) =
     member _.length () : Future<int> = nativeOnly
     /// The length of the file provided synchronously.
     member _.lengthSync () : int = nativeOnly
-    /// Opens the file for random access operations.
+    // /// Opens the file for random access operations.
 //     member _.open ({FileMode mode = FileMode.read}) : Future<RandomAccessFile> = nativeOnly
 //     /// Creates a new independent Stream for the contents of this file.
 //     member _.openRead ([int? start, int? end]) : Stream<List<int>> = nativeOnly

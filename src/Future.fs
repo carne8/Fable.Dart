@@ -2,14 +2,17 @@ namespace Fable.Dart.Future
 
 open Fable.Core
 open Fable.Core.Dart
-open FsToolkit.ErrorHandling
 
 /// https://api.dart.dev/dart-async/Future-class.html
 [<ImportMember "dart:async">]
 type Future<'T> =
     interface Dart.Future<'T>
     member _.``then``(_: 'T -> 'A) : Future<'A> = nativeOnly
+    member _.``then``(_: 'T -> Future<'A>) : Future<'A> = nativeOnly
     member _.catchError(_: obj -> 'A) : Future<'A> = nativeOnly
+
+type [<Global>] ``void`` = interface end
+type FutureVoid = Future<``void``>
 
 /// https://api.dart.dev/dart-future/Future-class.html
 [<RequireQualifiedAccess>]
@@ -23,6 +26,8 @@ module Future =
     let inline wait (futureList: Future<'T> array) : Future<'T array> = emitExpr (import "Future" "dart:async", futureList) "$0.wait($1)"
     /// Takes two futures and returns a tuple of the pair
     let zip (a1: Future<'T1>) (a2: Future<'T2>) : ('T1 * 'T2) Future = a1 |> bind (fun r1 -> a2 |> map (fun r2 -> r1, r2))
+    /// Use this when Fable doesn't generate valid Dart code.
+    let toVoid : Future<unit> -> Future<``void``> = unbox<Future<``void``>>
 
 [<AutoOpen>]
 module ComputationExpression =
